@@ -34,3 +34,74 @@ if (login === cancel) {
 } else {
   alert(badLoginMessage);
 }
+
+/* задание 2 */
+
+let credits;
+let pricePerDroid;
+let totalPrice;
+let a;
+
+credits = 23580;
+pricePerDroid = 300;
+
+a = prompt('Сколько дроидов хотите купить?', '0');
+if (a != null && parseInt(a, 10)) {
+  totalPrice = Number(a) * pricePerDroid;
+  const message =
+    'Вы купили [' +
+    a +
+    '] дроидов, на счету осталось [' +
+    (credits - totalPrice) +
+    '] кредитов.';
+  if (totalPrice <= credits) {
+    alert(message);
+  } else {
+    alert('Недостаточно средств на счету!');
+  }
+} else {
+  alert('Отменено пользователем!');
+}
+
+/*Задание 3 */
+
+let country;
+let price;
+let res;
+let message;
+const china = 100;
+const sthAmerica = 250;
+const australia = 170;
+const india = 80;
+const jamaica = 120;
+const errmessage = 'В вашей стране доставка не доступна';
+
+country = prompt('Укажите страну доставки', '');
+
+res = country.toLowerCase();
+console.log(res);
+switch (res) {
+  case 'китай':
+    price = china;
+    break;
+  case 'южная америка':
+    price = sthAmerica;
+    break;
+  case 'австралия':
+    price = australia;
+    break;
+  case 'индия':
+    price = india;
+    break;
+  case 'ямайка':
+    price = jamaica;
+    break;
+  default:
+    message = errmessage;
+}
+
+if (message != errmessage) {
+  message = 'Доставка в ' + country + ' будет стоить ' + price + ' кредитов';
+}
+
+alert(message);
