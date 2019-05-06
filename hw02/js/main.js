@@ -28,17 +28,24 @@
 const passwords = ['q', '11', '123', '321'];
 let attemptsLeft = 3;
 let input;
+let passok;
 
 do {
-  attemptsLeft = attemptsLeft - 1;
+  attemptsLeft = attemptsLeft -= 1;
+  console.log(attemptsLeft);
   input = prompt('Введите пароль', '');
-  if (attemptsLeft) {
+  if (!attemptsLeft) {
     alert('У вас закончились попытки, аккаунт заблокирован!');
   } else {
-    alert('Неверный пароль, у вас осталось ' + attemptsLeft + ' попыток');
-  }
-  for (let i = 0; i < passwords.length; i += 1) {
-    if (input === passwords[i]) alert('Добро пожаловать!');
-    break;
+    for (let i = 0; i < passwords.length; i += 1) {
+      if (input === passwords[i]) {
+        alert('Добро пожаловать!');
+        passok = true;
+      }
+      break;
+    }
+    if (!passok) {
+      alert('Неверный пароль, у вас осталось ' + attemptsLeft + ' попыток');
+    } else break;
   }
 } while (input != null && attemptsLeft);
