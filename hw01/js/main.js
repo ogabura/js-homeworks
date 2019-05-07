@@ -65,9 +65,7 @@ if (a != null && parseInt(a, 10)) {
 
 /*Задание 3 */
 
-let country;
 let price;
-let res;
 let message;
 const china = 100;
 const sthAmerica = 250;
@@ -76,32 +74,31 @@ const india = 80;
 const jamaica = 120;
 const errmessage = 'В вашей стране доставка не доступна';
 
-country = prompt('Укажите страну доставки', '');
+let country = prompt('Укажите страну доставки', '');
+if (country) {
+  switch (country.toLowerCase()) {
+    case 'китай':
+      price = china;
+      break;
+    case 'южная америка':
+      price = sthAmerica;
+      break;
+    case 'австралия':
+      price = australia;
+      break;
+    case 'индия':
+      price = india;
+      break;
+    case 'ямайка':
+      price = jamaica;
+      break;
+    default:
+      message = errmessage;
+  }
 
-res = country.toLowerCase();
-console.log(res);
-switch (res) {
-  case 'китай':
-    price = china;
-    break;
-  case 'южная америка':
-    price = sthAmerica;
-    break;
-  case 'австралия':
-    price = australia;
-    break;
-  case 'индия':
-    price = india;
-    break;
-  case 'ямайка':
-    price = jamaica;
-    break;
-  default:
-    message = errmessage;
-}
+  if (message != errmessage) {
+    message = 'Доставка в ' + country + ' будет стоить ' + price + ' кредитов';
+  }
 
-if (message != errmessage) {
-  message = 'Доставка в ' + country + ' будет стоить ' + price + ' кредитов';
-}
-
-alert(message);
+  alert(message);
+} else alert('Отменено пользователем');
