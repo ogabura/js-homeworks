@@ -1,8 +1,8 @@
 'use strict';
 
-let input;
 const numbers = [];
 let total = 0;
+let input;
 
 do {
   input = prompt('Введите число', '');
@@ -27,16 +27,16 @@ console.log('Общая сумма чисел равна ', total);
 
 const passwords = ['q', '11', '123', '321'];
 let attemptsLeft = 3;
-let input;
 let passok;
+let input1;
 
 do {
   console.log(attemptsLeft);
-  input = prompt('Введите пароль', '');
+  input1 = prompt('Введите пароль', '');
   if (attemptsLeft) {
-    attemptsLeft = attemptsLeft -= 1;
+    attemptsLeft -= 1;
     for (let i = 0; i < passwords.length; i += 1) {
-      if (input === passwords[i]) {
+      if (input1 === passwords[i]) {
         alert('Добро пожаловать!');
         passok = true;
         break;
@@ -45,7 +45,7 @@ do {
   } else {
     alert('У вас закончились попытки, аккаунт заблокирован!');
   }
-  if (!passok && input != null && attemptsLeft) {
+  if (!passok && input1 != null && attemptsLeft) {
     alert('Неверный пароль, у вас осталось ' + attemptsLeft + ' попыток');
   } else break;
-} while (input != null && attemptsLeft);
+} while (input1 != null && attemptsLeft);
