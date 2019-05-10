@@ -31,21 +31,23 @@ let passok;
 let input1;
 
 do {
-  console.log(attemptsLeft);
   input1 = prompt('Введите пароль', '');
-  if (attemptsLeft) {
+  if (input1 != null && passwords.includes(input1)) {
+    alert('Добро пожаловать!');
+    break;
+  } else {
     attemptsLeft -= 1;
-    for (let i = 0; i < passwords.length; i += 1) {
-      if (input1 === passwords[i]) {
-        alert('Добро пожаловать!');
-        passok = true;
+    if (input1 != null && attemptsLeft) {
+      //attemptsLeft -= 1;
+      alert('Неверный пароль, у вас осталось ' + attemptsLeft + ' попыток');
+    } else {
+      if (!attemptsLeft) {
+        alert('У вас закончились попытки, аккаунт заблокирован!');
+        break;
+      } else {
+        alert('Отменено пользователем');
         break;
       }
     }
-  } else {
-    alert('У вас закончились попытки, аккаунт заблокирован!');
   }
-  if (!passok && input1 != null && attemptsLeft) {
-    alert('Неверный пароль, у вас осталось ' + attemptsLeft + ' попыток');
-  } else break;
-} while (input1 != null && attemptsLeft);
+} while (attemptsLeft);
